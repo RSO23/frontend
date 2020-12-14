@@ -20,7 +20,7 @@ jobs:
           java-version: 11
       - name: Build & Test & Package with Maven
         run: |
-          mvn -Dspring.profiles.active=prod package -B --file pom.xml
+          mvn -Dspring.profiles.active=prod -Pproduction package -B --file pom.xml
       - name: Build a Docker image
         run: |
           mkdir target/dependency

@@ -34,5 +34,6 @@ spring:
 
 vaadin:
   productionMode: true
+  compatibilityMode: false
 
 isProd: true
