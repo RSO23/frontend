@@ -1,0 +1,35 @@
+isProd: false
+
+server:
+  port: 8087
+
+token:
+  # 60 min
+  secret: veryhardsecret
+
+spring:
+  application:
+    name: frontend
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true
+
+# Show details of health endpoint
+management:
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    diskspace:
+      enabled: true
+    db:
+      enabled: true
+
+---
+spring:
+  profiles: prod
+
+isProd: true
