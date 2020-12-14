@@ -1,4 +1,4 @@
-/* List view */
+/* Game accounts view */
 .game-accounts-view .content {
     display: flex;
 }
@@ -12,11 +12,27 @@
     padding: var(--lumo-space-m);
 }
 
+/* Game accounts view */
+.matches-view .content {
+    display: flex;
+}
+
+.matches-view .matches-grid {
+    flex: 1;
+}
+
+.matches-view .match-details-layout {
+    flex: 1;
+    padding: var(--lumo-space-m);
+}
+
 @media all and (max-width: 1100px) {
-    .list-view.editing .toolbar,
-    .list-view.editing .game-account-grid {
+    .game-accounts-view .toolbar,
+    .game-accounts-view .game-account-grid {
         display: none;
     }
+    .matches-view .toolbar,
+    .matches-view .matches-grid
 }
 
 /* Main layout */

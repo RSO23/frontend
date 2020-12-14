@@ -1,24 +1,21 @@
 package rso.frontend.backend.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.Data;
 
 @Data
 public class SummonerDto
 {
-    @JsonProperty("id")
     private String id;
-    @JsonProperty("accountId")
     private String accountId;
-    @JsonProperty("puuid")
     private String puuid;
-    @JsonProperty("username")
     private String username;
-    @JsonProperty("profileIconId")
-    private Integer profileIconId;
-    @JsonProperty("summonerLevel")
+    private String profileIconUrl;
     private Integer summonerLevel;
+    private String division;
+    private String tier;
+    private Integer leaguePoints;
+    private Integer wins;
+    private Integer losses;
 
 }
 

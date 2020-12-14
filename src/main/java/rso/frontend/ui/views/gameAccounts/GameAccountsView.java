@@ -26,6 +26,7 @@ public class GameAccountsView extends VerticalLayout
 
     private final UserCatalogueServiceFeign userCatalogue;
     private final TextField filterText = new TextField();
+    private Button addNewGameAccountButton;
 
     public GameAccountsView(UserCatalogueServiceFeign userCatalogue)
     {
@@ -72,10 +73,10 @@ public class GameAccountsView extends VerticalLayout
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
         filterText.addValueChangeListener(e -> updateList());
 
-        Button addNewGameAccount = new Button("Add new game account", click -> createGameAccount());
+        addNewGameAccountButton = new Button("Add new game account", click -> createGameAccount());
 
-        HorizontalLayout toolbar = new HorizontalLayout(filterText, addNewGameAccount);
-        addNewGameAccount.getStyle().set("margin-left", "auto");
+        HorizontalLayout toolbar = new HorizontalLayout(filterText, addNewGameAccountButton);
+        addNewGameAccountButton.getStyle().set("margin-left", "auto");
         toolbar.setWidth("100%");
         toolbar.setClassName("toolbar");
         return toolbar;
@@ -101,6 +102,9 @@ public class GameAccountsView extends VerticalLayout
 
         UserDto userDto = userCatalogue.getById(SecurityUtils.getUserId());
         grid.setItems(userDto.getGameAccountDtos());
+
+        int size = userDto.getGameAccountDtos().size();
+        addNewGameAccountButton.setEnabled(size <= 2);
     }
 
     private void closeEditor() {

@@ -20,6 +20,6 @@ public interface DataCatalogueServiceFeign
     @PostMapping("/matches/{accountId}")
     Page<MatchDto> getByAccountId(@PathVariable("accountId") String accountId, Pageable pageable);
 
-    @GetMapping("/{username}")
+    @GetMapping("/summoner/{username}")
     SummonerDto getSummonerByUsername(@PathVariable("username") String username);
 }
