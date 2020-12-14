@@ -2,6 +2,8 @@ isProd: false
 
 server:
   port: 8087
+  servlet:
+    context-path: /frontend
 
 token:
   # 60 min
@@ -15,6 +17,7 @@ spring:
       ribbon:
         enabled: true
 
+
 # Show details of health endpoint
 management:
   endpoint:
@@ -27,6 +30,15 @@ management:
       enabled: true
     db:
       enabled: true
+
+feign:
+  httpclient:
+    connection-timeout: 60000
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 60000
 
 ---
 spring:
