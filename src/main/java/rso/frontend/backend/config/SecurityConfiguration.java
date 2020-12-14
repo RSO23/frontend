@@ -1,5 +1,6 @@
 package rso.frontend.backend.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,6 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     private static final String LOGIN_URL = "/login";
     private static final String LOGOUT_SUCCESS_URL = "/login";
 
+    @Value("my.login.success.url")
+    private static final String loginSuccessUrl = "/";
+
     private final CustomAuthenticationProvider customAuthenticationProvider;
 
     @Override
@@ -36,6 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .and().formLogin()
                 .loginPage(LOGIN_URL).permitAll()
                 .loginProcessingUrl(LOGIN_PROCESSING_URL)
+                .defaultSuccessUrl("/frontend/")
                 .failureUrl(LOGIN_FAILURE_URL)
                 .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL)
                 .and().sessionManagement().sessionFixation().newSession();

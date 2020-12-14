@@ -38,6 +38,11 @@ feign:
         connectTimeout: 60000
         readTimeout: 60000
 
+my:
+  login:
+    success:
+      url: "/"
+
 ---
 spring:
   profiles: prod
@@ -45,5 +50,10 @@ spring:
 vaadin:
   productionMode: true
   compatibilityMode: false
+
+my:
+  login:
+    success:
+      url: "/frontend/"
 
 isProd: true
