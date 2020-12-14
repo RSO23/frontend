@@ -20,7 +20,7 @@ spec:
         - image: blarc/rso-frontend
           name: frontend
           ports:
-            - containerPort: 8081
+            - containerPort: 8087
               name: server
               protocol: TCP
           imagePullPolicy: Always
@@ -46,7 +46,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8081
+    - port: 8087
       protocol: TCP
       targetPort: server
   selector:
