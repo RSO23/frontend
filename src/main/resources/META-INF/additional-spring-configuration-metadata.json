@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "my.login.success.url",
+      "type": "java.lang.String",
+      "description": "Description for my.login.success.url."
+  }
+] }

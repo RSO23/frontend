@@ -25,8 +25,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     private static final String LOGIN_URL = "/login";
     private static final String LOGOUT_SUCCESS_URL = "/login";
 
-    @Value("my.login.success.url")
-    private static final String loginSuccessUrl = "/";
+    @Value("${my.login.success.url:/}")
+    private String loginSuccessUrl;
 
     private final CustomAuthenticationProvider customAuthenticationProvider;
 
@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .and().formLogin()
                 .loginPage(LOGIN_URL).permitAll()
                 .loginProcessingUrl(LOGIN_PROCESSING_URL)
-                .defaultSuccessUrl("/frontend/")
+                .defaultSuccessUrl(loginSuccessUrl, true)
                 .failureUrl(LOGIN_FAILURE_URL)
                 .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL)
                 .and().sessionManagement().sessionFixation().newSession();
