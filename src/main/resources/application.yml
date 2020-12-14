@@ -2,8 +2,6 @@ isProd: false
 
 server:
   port: 8087
-  servlet:
-    context-path: /frontend
 
 token:
   # 60 min
