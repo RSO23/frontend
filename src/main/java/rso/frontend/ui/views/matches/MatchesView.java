@@ -149,7 +149,6 @@ public class MatchesView extends VerticalLayout
         updateButton.addClickListener(event -> updateMatches());
 
         HorizontalLayout toolbar = new HorizontalLayout(filterText, gameAccountComboBox, updateButton);
-        updateButton.getStyle().set("margin-left", "auto");
         toolbar.setWidth("100%");
         toolbar.setClassName("toolbar");
         return toolbar;
