@@ -8,7 +8,7 @@ import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -29,7 +29,7 @@ public class MainLayout extends AppLayout
 
     private void createHeader()
     {
-        H3 logo = new H3("League of Legends Predictor");
+        H1 logo = new H1("League of Legends Predictor");
         logo.addClassName("logo");
 
         Button logout = new Button("Logout", event -> {

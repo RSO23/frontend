@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 
 import lombok.RequiredArgsConstructor;
 import rso.frontend.backend.cache.CustomRequestCache;
@@ -42,9 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .loginProcessingUrl(LOGIN_PROCESSING_URL)
                 .defaultSuccessUrl(loginSuccessUrl, true)
                 .failureUrl(LOGIN_FAILURE_URL)
-                .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL)
-                .and().sessionManagement().sessionFixation().newSession();
-
+                .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL);
     }
 
     @Override
