@@ -12,7 +12,7 @@
     padding: var(--lumo-space-m);
 }
 
-/* Game accounts view */
+/* Matches view */
 .matches-view .content {
     display: flex;
 }
@@ -26,13 +26,37 @@
     padding: var(--lumo-space-m);
 }
 
+/* Predictions view */
+.predictions-view .content {
+    display: flex;
+}
+
+.predictions-view .predictions-grid {
+    flex: 3;
+}
+
+.predictions-view .predictions-form {
+    flex: 1;
+    padding: var(--lumo-space-m);
+}
+
 @media all and (max-width: 1100px) {
+    .dashboard-view .toolbar,
+    .dashboard-view .content {
+        display: none;
+    }
     .game-accounts-view .toolbar,
     .game-accounts-view .game-account-grid {
         display: none;
     }
     .matches-view .toolbar,
-    .matches-view .matches-grid
+    .matches-view .matches-grid {
+        display: none
+    }
+    .predictions-view .toolbar,
+    .predictions-view .predictions-grid {
+        display: none
+    }
 }
 
 /* Main layout */
@@ -50,3 +74,62 @@ a[highlight] {
     font-size: 1em;
     margin: var(--lumo-space-m);
 }
+
+.match-details-grid-toolbar-blue {
+    background: #d5e6f8;
+    writing-mode: vertical-lr;
+    margin: 0;
+    padding: .5em;
+}
+
+.match-details-grid-toolbar-red {
+    background: #ffb7b4;
+    writing-mode: vertical-lr;
+    margin: 0;
+    padding: .5em;
+}
+
+.match-details-grid-prediction .match-details-grid-toolbar-prediction {
+    background: #ffd89d;
+    writing-mode: vertical-lr;
+    margin: 0;
+    padding: .5em;
+}
+
+.match-details-grid {
+    margin-top: 0;
+}
+
+
+/* TESTING */
+
+.match-details-grid-prediction {
+    --grid-heigth: 200px;
+}
+
+.match-details-grid-prediction .grid-root {
+    position: relative;
+    height: var(--grid-heigth);
+    width: 100%;
+}
+
+.match-details-grid-prediction .grid,
+.match-details-grid-prediction .warning {
+    height: var(--grid-heigth);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.match-details-grid-prediction .warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.match-details-grid-prediction .warning.hidden {
+    display: none;
+}
+

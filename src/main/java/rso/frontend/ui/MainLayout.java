@@ -18,6 +18,7 @@ import com.vaadin.flow.router.RouterLink;
 import rso.frontend.ui.views.dashboard.DashboardView;
 import rso.frontend.ui.views.gameAccounts.GameAccountsView;
 import rso.frontend.ui.views.matches.MatchesView;
+import rso.frontend.ui.views.predictions.PredictionsView;
 
 @CssImport("./styles/shared-styles.css")
 public class MainLayout extends AppLayout
@@ -57,12 +58,17 @@ public class MainLayout extends AppLayout
         gameAccounts.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink matches = new RouterLink("Matches", MatchesView.class);
-        gameAccounts.setHighlightCondition(HighlightConditions.sameLocation());
+        matches.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink predictions = new RouterLink("Predictions", PredictionsView.class);
+        predictions.setHighlightCondition(HighlightConditions.sameLocation());
+
 
         addToDrawer(new VerticalLayout(
                 dashboard,
                 gameAccounts,
-                matches
+                matches,
+                predictions
         ));
 
     }

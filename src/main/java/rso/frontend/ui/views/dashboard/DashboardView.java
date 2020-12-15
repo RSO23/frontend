@@ -33,10 +33,11 @@ public class DashboardView extends VerticalLayout
         this.userCatalogueServiceFeign = userCatalogueServiceFeign;
         this.dataCatalogueServiceFeign = dataCatalogueServiceFeign;
 
-        addClassName("dashboard");
+        addClassName("dashboard-view");
         setDefaultHorizontalComponentAlignment(Alignment.START);
 
         HorizontalLayout content = createContent();
+        content.setClassName("content");
         add(content);
     }
 

@@ -35,7 +35,6 @@ public class GameAccountsView extends VerticalLayout
         addClassName("game-accounts-view");
         setSizeFull();
 
-        HorizontalLayout toolbar = getToolbar();
         configureGrid();
 
         gameAccountsForm = new GameAccountsForm();
@@ -48,7 +47,7 @@ public class GameAccountsView extends VerticalLayout
         content.addClassName("content");
         content.setSizeFull();
 
-        add(toolbar, content);
+        add(getToolbar(), content);
         updateList();
         closeEditor();
     }

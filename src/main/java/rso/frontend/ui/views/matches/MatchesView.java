@@ -31,6 +31,8 @@ import rso.frontend.backend.dto.GameAccountDto;
 import rso.frontend.backend.dto.MatchDto;
 import rso.frontend.backend.dto.ParticipantDto;
 import rso.frontend.backend.feign.DataCatalogueServiceFeign;
+import rso.frontend.backend.feign.PredictionCatalogueServiceFeign;
+import rso.frontend.backend.feign.PredictionServiceFeign;
 import rso.frontend.backend.feign.UserCatalogueServiceFeign;
 import rso.frontend.backend.util.SecurityUtils;
 import rso.frontend.ui.MainLayout;
@@ -50,7 +52,7 @@ public class MatchesView extends VerticalLayout
 
     private final MatchDetailsLayout matchDetailsLayout;
 
-    public MatchesView(DataCatalogueServiceFeign dataCatalogue, UserCatalogueServiceFeign userCatalogue) {
+    public MatchesView(DataCatalogueServiceFeign dataCatalogue, UserCatalogueServiceFeign userCatalogue, PredictionServiceFeign predictionServiceFeign, PredictionCatalogueServiceFeign predictionCatalogueServiceFeign) {
         this.dataCatalogue = dataCatalogue;
         this.userCatalogue = userCatalogue;
 
@@ -60,7 +62,7 @@ public class MatchesView extends VerticalLayout
         HorizontalLayout toolbar = getToolbar();
         configureGrid();
 
-        matchDetailsLayout = new MatchDetailsLayout();
+        matchDetailsLayout = new MatchDetailsLayout(predictionServiceFeign, predictionCatalogueServiceFeign);
 
         Div content = new Div(grid, matchDetailsLayout);
         content.addClassName("content");
@@ -81,7 +83,6 @@ public class MatchesView extends VerticalLayout
         grid.addClassName("matches-grid");
         grid.setSizeFull();
         grid.setColumns();
-
 
         grid.addComponentColumn(matchDto -> matchDto.getParticipants().stream()
                 .filter(participantDto -> participantDto.getAccountId().equals(gameAccountComboBox.getValue().getAccountId()))
@@ -123,10 +124,10 @@ public class MatchesView extends VerticalLayout
                 .setComparator(Comparator.comparing(matchDto -> LocalDateTime.ofInstant(Instant.ofEpochMilli(matchDto.getTimestamp()), TimeZone.getDefault().toZoneId())))
                 .setSortable(true);
 
-        grid.getColumns().forEach(col -> col.setAutoWidth(true));
         grid.sort(List.of(new GridSortOrder<>(grid.getColumnByKey("timestamp"), SortDirection.DESCENDING)));
 
         grid.asSingleSelect().addValueChangeListener(event -> showMatchDetails(event.getValue()));
+        grid.getColumns().forEach(col -> col.setAutoWidth(true));
 
     }
 
@@ -156,7 +157,9 @@ public class MatchesView extends VerticalLayout
 
     private void closeDetails()
     {
-        matchDetailsLayout.setParticipants(new ArrayList<>());
+        MatchDto matchDto = new MatchDto();
+        matchDto.setParticipants(new ArrayList<>());
+        matchDetailsLayout.setMatchDto(matchDto);
         matchDetailsLayout.setVisible(false);
         removeClassName("editing");
     }
@@ -167,7 +170,7 @@ public class MatchesView extends VerticalLayout
             closeDetails();
         }
         else {
-            matchDetailsLayout.setParticipants(matchDto.getParticipants());
+            matchDetailsLayout.setMatchDto(matchDto);
             matchDetailsLayout.setVisible(true);
             addClassName("editing");
         }
