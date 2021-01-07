@@ -9,7 +9,7 @@ import rso.frontend.backend.dto.MatchDto;
 import rso.frontend.backend.dto.PredictionDto;
 import rso.frontend.backend.dto.SummonerNamesDto;
 
-@FeignClient(name = "prediction", url = "http://localhost:8083/")
+@FeignClient(name = "prediction")
 public interface PredictionServiceFeign
 {
     @PostMapping("/predict")

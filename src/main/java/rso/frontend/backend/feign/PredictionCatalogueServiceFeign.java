@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import rso.frontend.backend.dto.PredictionDto;
 
-@FeignClient(name = "prediction-catalogue", url = "http://localhost:8086/")
+@FeignClient(name = "prediction-catalogue")
 public interface PredictionCatalogueServiceFeign
 {
     @GetMapping("/predictions/user/{userId}")
