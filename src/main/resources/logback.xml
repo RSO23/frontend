@@ -1,9 +1,9 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <appender name="stash" class="net.logstash.logback.appender.LogstashUdpSocketAppender">
-        <host>4af789b4-bc8b-4996-bb5a-55fe39e0fb1a-ls.logit.io</host>
+        <host>fc7c674b-b815-43e6-bc9b-12bd40c55f1e-ls.logit.io</host>
         <!-- port is optional (default value shown) -->
-        <port>22652</port>
+        <port>23972</port>
         <!-- layout is required -->
         <layout class="net.logstash.logback.layout.LogstashLayout"/>
     </appender>

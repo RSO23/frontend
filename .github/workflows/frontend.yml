@@ -39,9 +39,9 @@ jobs:
       - name: Setup AKS context
         uses: azure/aks-set-context@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_TEST }}
-          resource-group: ${{ secrets.RESOURCE_GROUP_TEST}}
-          cluster-name: rso23-test
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          cluster-name: rso23
       - name: Deploy to Kubernetes
         run: |
           kubectl set image deployment/frontend-deployment frontend=${{ secrets.DOCKERHUB_USERNAME }}/rso-frontend:$(git rev-parse --short "$GITHUB_SHA")
